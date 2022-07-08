@@ -84,7 +84,8 @@ class Rossmann( object ):
         df2['year_week'] = df2['date'].dt.strftime( '%Y-%W' )
         
         # competition since
-        df2['competition_since'] = df2.apply( lambda x: datetime.datetime( year=x['competition_open_since_year'], month = \                                                                                             x['competition_open_since_month'], day=1 ), axis=1 )
+        df2['competition_since'] = df2.apply( lambda x: datetime.datetime( year=x['competition_open_since_year'], month = \
+                                                                                x['competition_open_since_month'], day=1 ), axis=1 )
         df2['competition_time_month'] = ( ( df2['date'] - df2['competition_since'] ) / 30 ).apply( lambda x: x.days ).astype( int )
         
         # promo since
@@ -97,7 +98,8 @@ class Rossmann( object ):
         df2['assortment'] = df2['assortment'].apply( lambda x: 'basic' if x == 'a' else 'extra' if x == 'b' else 'extended' )
         
         # state holiday
-        df2['state_holiday'] = df2['state_holiday'].apply( lambda x: 'public_holiday' if x == 'a' else 'easter_holiday' if x == 'b' else \                                                                                                 'christmas' if x == 'c' else 'regular_day' )
+        df2['state_holiday'] = df2['state_holiday'].apply( lambda x: 'public_holiday' if x == 'a' else 'easter_holiday' if x == 'b' else 
+                                                                                                       'christmas' if x == 'c' else 'regular_day' )
         
 
         # 3.0. PASSO 03 - FILTRAGEM DE VARIÁVEIS
@@ -159,11 +161,8 @@ class Rossmann( object ):
         
         return df5[ cols_selected ]
     
-    def get_prediction( self, model, original_data, test_data ):
+    def get_prediction( self, model, test_data ):
         # prediction
-        pred = model.predict( test_data )
+        pred = model.predict( test_data )[0]
         
-        # join pred into the original data
-        original_data['prediction'] = np.expm1( pred )
-        
-        return original_data.to_json( orient='records', date_format='iso' )
+        return np.expm1( pred )
