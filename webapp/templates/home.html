@@ -31,19 +31,20 @@
           <h1 class="fw-light">Rossmann Store Sales</h1>
           <p class="lead">Este projeto é capaz de fazer a previsão de vendas das lojas da drogaria Rossmann nas próximas
             seis semanas.</p>
-
+          <br>
+          <br>
           <form action="{{ url_for('main') }}" method="POST">
             <div class="mb-3">
               <input type="number" class="form-control" id="code" placeholder="Código da Loja" name="code">
             </div>
 
             <button type="submit" class="btn btn-primary">Verificar</button>
-
           </form>
 
+          {% if pred %}
           <hr>
-
-          <h2>A Loja {{ code_store }} irá vender ${{ pred }}</h2>
+          <h3>A Loja {{ code_store }} irá vender {{ '${:,.2f}'.format( pred ) }} nas próximas 6 semanas.</h3>
+          {% endif %}
         </div>
       </div>
     </div>

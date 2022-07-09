@@ -7,7 +7,7 @@ df = pd.read_csv( 'data/test.csv' )
 store = pd.read_csv( 'data/store.csv' )
 df = pd.merge( df, store, how='left', on='Store' )
 
-#model = pickle.load( open( 'model/model_rossmann.pkl', 'rb' ) )
+model = pickle.load( open( 'model/model.pkl', 'rb' ) )
 
 app = flask.Flask( __name__, template_folder='templates' )
 
@@ -20,20 +20,23 @@ def main():
         code_store = int( flask.request.form['code'] )
 
         # choose store for prediction
-        df = df[ df['Store'] == code_store ]
+        data_raw = df[ df['Store'] == code_store ]
+        data_raw = data_raw.drop( 'Id', axis=1 )
 
         # Instantiate Rossmann class
         pipeline = Rossmann()
         # data cleaning
-        df1 = pipeline.data_cleaning( test_raw )
+        df1 = pipeline.data_cleaning( data_raw )
         # feature engineering
         df2 = pipeline.feature_engineering( df1 )
         # data preparation
         df3 = pipeline.data_preparation( df2 )
         # prediction
         prediction = pipeline.get_prediction( model, df3 )
+
+        sales = float( prediction['prediction'].sum() )
         
-        return flask.render_template( 'home.html', pred=prediction, code_store=code_store )
+        return flask.render_template( 'home.html', pred=sales, code_store=code_store )
 
 if __name__ == "__main__":
     app.run( host='0.0.0.0', debug=True )

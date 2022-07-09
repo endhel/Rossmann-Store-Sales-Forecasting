@@ -163,6 +163,7 @@ class Rossmann( object ):
     
     def get_prediction( self, model, test_data ):
         # prediction
-        pred = model.predict( test_data )[0]
+        pred = model.predict( test_data )
+        test_data['prediction'] = np.expm1( pred )
         
-        return np.expm1( pred )
+        return test_data
