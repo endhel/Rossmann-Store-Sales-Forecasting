@@ -39,4 +39,4 @@ def main():
         return flask.render_template( 'home.html', pred=sales, code_store=code_store )
 
 if __name__ == "__main__":
-    app.run( host='0.0.0.0', debug=True )
+    app.run()
