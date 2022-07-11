@@ -21,22 +21,28 @@ def main():
 
         # choose store for prediction
         data_raw = df[ df['Store'] == code_store ]
-        data_raw = data_raw.drop( 'Id', axis=1 )
 
-        # Instantiate Rossmann class
-        pipeline = Rossmann()
-        # data cleaning
-        df1 = pipeline.data_cleaning( data_raw )
-        # feature engineering
-        df2 = pipeline.feature_engineering( df1 )
-        # data preparation
-        df3 = pipeline.data_preparation( df2 )
-        # prediction
-        prediction = pipeline.get_prediction( model, df3 )
+        if not data_raw.empty:
+            data_raw = data_raw.drop( 'Id', axis=1 )
 
-        sales = float( prediction['prediction'].sum() )
+            # Instantiate Rossmann class
+            pipeline = Rossmann()
+            # data cleaning
+            df1 = pipeline.data_cleaning( data_raw )
+            # feature engineering
+            df2 = pipeline.feature_engineering( df1 )
+            # data preparation
+            df3 = pipeline.data_preparation( df2 )
+            # prediction
+            prediction = pipeline.get_prediction( model, df3 )
+
+            sales = float( prediction['prediction'].sum() )
+           
+            return flask.render_template( 'home.html', pred=sales, code_store=code_store )
+
+        ne = True
+        return flask.render_template( 'home.html', ne=ne )
         
-        return flask.render_template( 'home.html', pred=sales, code_store=code_store )
 
 if __name__ == "__main__":
     app.run()

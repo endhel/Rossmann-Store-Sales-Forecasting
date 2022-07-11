@@ -51,6 +51,9 @@
           {% if pred %}
           <hr>
           <h3>A Loja {{ code_store }} irá vender {{ '${:,.2f}'.format( pred ) }} nas próximas 6 semanas.</h3>
+          {% elif ne %}
+          <hr>
+          <h3>Código incorreto!</h3>
           {% endif %}
         </div>
       </div>
