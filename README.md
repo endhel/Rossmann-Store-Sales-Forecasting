@@ -62,11 +62,45 @@ After a meeting between Rossmann's directors, managers and CEO, it was planned t
 
 # 4. Machine Learning Models Aplied
 
-# 5. Conversion of model performance into business values
+The tests were performed using the following algorithms:
 
-# 6. Conclusion
+**Average Model**
 
-# 7. Next Steps
+**Linear Regression Model**
+
+**Linear Regression Regularized Model - Lasso**
+
+**Random Forest Regressor**
+
+**XGBoost Regressor**
+
+# 5. Machine Learning Model Performance
+
+**Single Performance**
+
+| Model Name | MAE | MAPE | RMSE |
+|-----------|---------|-----------|---------|
+|  Random Forest Regressor |	679.598831 |	0.099913 |	1011.119437
+|  Average Model |	1354.800353 |	0.206400 |	1835.135542
+|  Linear Regression |	1867.089774 |	0.292694 | 2671.049215
+|  Linear Regression - Lasso |	1891.704881 |	0.289106 | 2744.451737 
+|  XGBoost Regressor |	6683.423528 |	0.949439 |	7330.693347 
+
+**Real Performance - Cross Validation**
+
+| Model Name | MAE | MAPE | RMSE |
+|-----------|---------|-----------|---------|
+|  Random Forest Regressor |	836.61 +/- 217.1 |	0.12 +/- 0.02 |	1254.3 +/- 316.17
+|  Linear Regression |	2081.73 +/- 295.63 |	0.3 +/- 0.02 |	2952.52 +/- 468.37
+|  Linear Regression - Lasso |	2116.38 +/- 341.5 |	0.29 +/- 0.01 |	3057.75 +/- 504.26 
+|  XGBoost Regressor |	7049.2 +/- 588.65 |	0.95 +/- 0.0 |	7715.2 +/- 689.51 
+
+
+# 6. Conversion of model performance into business values
+
+# 7. Conclusion
+
+# 8. Next Steps
 
 
 
