@@ -98,6 +98,21 @@ The tests were performed using the following algorithms:
 
 # 6. Conversion of model performance into business values
 
+**Current model based on average sales**
+
+| Scenario | Values |
+|---------|---------|
+| Predictions | R$280,754,389.45 |
+
+Model with
+
+| Scenario | Values |
+|---------|---------|
+| Predictions | 233 |
+| Worst Scenario | 233 |
+| Best Scenario | 233 |
+
+
 # 7. Conclusion
 
 # 8. Next Steps
