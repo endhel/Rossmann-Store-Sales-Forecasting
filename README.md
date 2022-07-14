@@ -10,39 +10,51 @@ Rossmann operates over 3,000 drug stores in 7 European countries. Currently, Ros
 
 After a meeting between Rossmann's directors, managers and CEO, it was planned that the stores should be renovated. However, in order to raise funds for the renovation, it was necessary to forecast sales more accurately, so the business team decided to **forecast the sales for the next 6 weeks of the stores using machine learning models, in order to know if the budget will be enough for the renovation.**
 
-# 2. Solution Proposal
+# 2. Business Assumptions
+
+The following assumptions were made about the business problem:
+
+- For stores that did not have "CompetitionDistance" information, it was assumed that the distance would be 2 times greater than the greatest distance from the nearest competitor.
+- As it was assumed that there is a competitor even if very far away, if there is no date on which the competitor opened or data regarding promotional periods, we work with the date of the store considering the premise that some variables derived from time are extremely important for represent a behavior.
+- Customers data was discarded. Maybe it could be scope for another complementary project to this one.
+- The days when the stores were closed were not used.
+- Entries whose sales were equal to 0 were not used.
+
+# 3. Solution Proposal
 
 - Granularity (hour, day, year, etc) => 6 weeks
 - Problem Type (Classification, Regression, Clustering, etc) => Regression
 - Delivery format (dashboard, web page, csv, etc) => Web page
 
-## 2.1. Solution Strategy
+## 3.1. Solution Strategy
 
-**Step 01:** Data Description
+The strategy to solve this challenge was:
 
-**Step 02:** Feature Engineering
+**Step 01. Data Description:** Use statistics metrics to indentify data outside the scope of the business.
 
-**Step 03:** Data Filtering
+**Step 02. Feature Engineering:** Derive new attributes based on the original variables to better describe the phenomenon that will be modeled.
 
-**Step 04:** Exploratory Data Analysis
+**Step 03. Data Filtering:** Filter rows and select columns that do not contain information for modeling or that do not match the scope of the business.
 
-**Step 05:** Data Preparation
+**Step 04. Exploratory Data Analysis:** Explore data to find insights and better understand the impact of variables on model learning.
 
-**Step 06:** Feature Selection
+**Step 05. Data Preparation:** Prepare the data so that the Machine Learning models can learn the specific behavior.
 
-**Step 07:** Machine Learning Modelling
+**Step 06. Feature Selection:** Selection of the most significant attributes for training the models.
 
-**Step 08:** Hyperparameter Fine Tuning
+**Step 07. Machine Learning Modelling:** Machine Learning model training.
 
-**Step 09:** Error Interpretation
+**Step 08. Hyperparameter Fine Tuning:** Choose the best values for each of the parameters of the model selected from the previous step.
 
-**Step 10:** Deploy Model to Production
+**Step 09. Convert Model Performance to Business Values:** Convert the performance of the Machine Learning models into a business result.
+
+**Step 10. Deploy Model to Production:** Publish the model in a cloud environment so that other people or services can use the results to improve the business decision.
 
 **To access the Web page, click below:**
 
 [<img alt="Heroku" src="https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white"/>](https://rossmann-sales-forecasting.herokuapp.com)
 
-# 3. Top 4 Data Insights
+# 4. Top 4 Data Insights
 
 **Hypothesis 8.** Stores should sell more over the years.
 
@@ -60,7 +72,7 @@ After a meeting between Rossmann's directors, managers and CEO, it was planned t
 
 **TRUE** Stores sell less on weekends.
 
-# 4. Machine Learning Models Aplied
+# 5. Machine Learning Models Aplied
 
 The tests were performed using the following algorithms:
 
@@ -74,7 +86,7 @@ The tests were performed using the following algorithms:
 
 **XGBoost Regressor**
 
-# 5. Machine Learning Model Performance
+# 6. Machine Learning Model Performance
 
 **Single Performance**
 
@@ -105,7 +117,7 @@ After finding the best parameters for the model using the Random Search method, 
 |-----------|---------|-----------|---------|
 |  Random Forest Regressor |	673.88146 |	0.098973 |	1003.765266
 
-# 6. Conversion of model performance into business values
+# 7. Conversion of model performance into business values
 
 **Current model based on average sales**
 
@@ -129,11 +141,11 @@ After finding the best parameters for the model using the Random Search method, 
 | Best Scenario | R$8,624,385.27 |
 
 
-# 7. Conclusion
+# 8. Conclusion
 
 At the end of this project it was possible to understand how the performance of machine learning models can be converted to business values, especially for regression problems. In addition, it was gratifying to see the final result, with the model put into production, and being able to be used by any user. The best lesson was to see that the real job of data scientists is not to build models and dashboards, but to generate value for companies through the data and tools they have at their disposal.
 
-# 8. Next Steps
+# 9. Next Steps 
 
 In order to improve the results of this work, it will be necessary to create new variables that have a greater influence on the sales phenomenon. Furthermore, a more robust method can be used to find the best hyperparameters for the model, and use different techniques to handle missing values and to rescale the data.
 
