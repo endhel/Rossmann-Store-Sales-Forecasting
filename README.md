@@ -8,7 +8,7 @@
 
 Rossmann operates over 3,000 drug stores in 7 European countries. Currently, Rossmann store managers are tasked with predicting their daily sales for up to six weeks in advance. Store sales are influenced by many factors, including promotions, competition, school and state holidays, seasonality, and locality. With thousands of individual managers predicting sales based on their unique circumstances, the accuracy of results can be quite varied.
 
-After a meeting between Rossmann's directors, managers and CEO, it was planned that the stores should be renovated. However, in order to raise funds for the renovation, it was necessary to forecast sales more accurately, so the business team decided to **forecast the sales for the next 6 weeks of the stores, in order to know if the budget will be enough for the renovation.**
+After a meeting between Rossmann's directors, managers and CEO, it was planned that the stores should be renovated. However, in order to raise funds for the renovation, it was necessary to forecast sales more accurately, so the business team decided to **forecast the sales for the next 6 weeks of the stores using machine learning models, in order to know if the budget will be enough for the renovation.**
 
 # 2. Solution Proposal
 
@@ -95,6 +95,15 @@ The tests were performed using the following algorithms:
 |  Linear Regression - Lasso |	2116.38 +/- 341.5 |	0.29 +/- 0.01 |	3057.75 +/- 504.26 
 |  XGBoost Regressor |	7049.2 +/- 588.65 |	0.95 +/- 0.0 |	7715.2 +/- 689.51 
 
+The Random Forest model obtained the best results and was chosen to move on to the Hypeparameter Fine Tuning stage.
+
+**Final Performance - Hyperparameter Fine Tunning**
+
+After finding the best parameters for the model using the Random Search method, the final metrics for the model were as follows:
+
+| Model Name | MAE | MAPE | RMSE |
+|-----------|---------|-----------|---------|
+|  Random Forest Regressor |	673.88146 |	0.098973 |	1003.765266
 
 # 6. Conversion of model performance into business values
 
@@ -104,18 +113,29 @@ The tests were performed using the following algorithms:
 |---------|---------|
 | Predictions | R$280,754,389.45 |
 
-Model with
+**Model with Random Forest Regressor**
 
 | Scenario | Values |
 |---------|---------|
-| Predictions | 233 |
-| Worst Scenario | 233 |
-| Best Scenario | 233 |
+| Predictions | R$288,623,718.62 |
+| Worst Scenario | R$287,868,662.51 |
+| Best Scenario | R$289,378,774.72 |
+
+**Difference Between Models**
+
+| Scenario | Values |
+|---------|---------|
+| Worst Scenario | R$7,114,273.06 |
+| Best Scenario | R$8,624,385.27 |
 
 
 # 7. Conclusion
 
+At the end of this project it was possible to understand how the performance of machine learning models can be converted to business values, especially for regression problems. In addition, it was gratifying to see the final result, with the model put into production, and being able to be used by any user. The best lesson was to see that the real job of data scientists is not to build models and dashboards, but to generate value for companies through the data and tools they have at their disposal.
+
 # 8. Next Steps
+
+In order to improve the results of this work, it will be necessary to create new variables that have a greater influence on the sales phenomenon. Furthermore, a more robust method can be used to find the best hyperparameters for the model, and use different techniques to handle missing values and to rescale the data.
 
 
 
